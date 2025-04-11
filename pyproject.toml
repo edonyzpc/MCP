@@ -5,6 +5,7 @@ description = "MCP Servers and Clients by Edony"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "dashscope>=1.23.1",
     "httpx>=0.28.1",
     "langchain>=0.3.23",
     "langchain-community>=0.3.21",

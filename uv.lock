@@ -300,6 +300,19 @@ wheels = [
 ]
 
 [[package]]
+name = "dashscope"
+version = "1.23.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohttp" },
+    { name = "requests" },
+    { name = "websocket-client" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e6/59/44d437c31cea0799617eb00862b17f4795ad4a3c19d24c65166e24ba783a/dashscope-1.23.1-py3-none-any.whl", hash = "sha256:2c3bd6ed909de72cc4833ada0f7fdae670031738d01969a76f3676a6bbb56026", size = 1277878 },
+]
+
+[[package]]
 name = "dataclasses-json"
 version = "0.6.7"
 source = { registry = "https://pypi.org/simple" }
@@ -1424,10 +1437,20 @@ wheels = [
 ]
 
 [[package]]
+name = "websocket-client"
+version = "1.8.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e6/30/fba0d96b4b5fbf5948ed3f4681f7da2f9f64512e1d303f94b4cc174c24a5/websocket_client-1.8.0.tar.gz", hash = "sha256:3239df9f44da632f96012472805d40a23281a991027ce11d2f45a6f24ac4c3da", size = 54648 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5a/84/44687a29792a70e111c5c477230a72c4b957d88d16141199bf9acb7537a3/websocket_client-1.8.0-py3-none-any.whl", hash = "sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526", size = 58826 },
+]
+
+[[package]]
 name = "x-mcp"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "dashscope" },
     { name = "httpx" },
     { name = "langchain" },
     { name = "langchain-community" },
@@ -1440,6 +1463,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "dashscope", specifier = ">=1.23.1" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "langchain", specifier = ">=0.3.23" },
     { name = "langchain-community", specifier = ">=0.3.21" },
