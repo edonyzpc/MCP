@@ -73,3 +73,13 @@ uv run ./clients/mcp-client/client.py ./servers/weather-server-mcp/weather.py
 ```
 
 ![](./docs/image-client.png)
+
+## Inspect MCP Server
+```bash
+npx @modelcontextprotocol/inspector \
+  uv \
+  --directory servers/weather-server-mcp \
+  run \
+  weather.py
+```
+![](./docs/image-inspector.png)
