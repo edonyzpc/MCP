@@ -15,4 +15,8 @@ dependencies = [
     "langgraph>=0.3.28",
     "mcp>=1.6.0",
     "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
 ]
+
+[tool.uv.workspace]
+members = ["servers/*"]

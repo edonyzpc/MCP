@@ -6,6 +6,13 @@ resolution-markers = [
     "python_full_version < '3.12.4'",
 ]
 
+[manifest]
+members = [
+    "mcp-obsidian",
+    "weather-server-mcp",
+    "x-mcp",
+]
+
 [[package]]
 name = "aiohappyeyeballs"
 version = "2.6.1"
@@ -815,6 +822,11 @@ sdist = { url = "https://files.pythonhosted.org/packages/95/d2/f587cb965a56e9926
 wheels = [
     { url = "https://files.pythonhosted.org/packages/10/30/20a7f33b0b884a9d14dd3aa94ff1ac9da1479fe2ad66dd9e2736075d2506/mcp-1.6.0-py3-none-any.whl", hash = "sha256:7bd24c6ea042dbec44c754f100984d186620d8b841ec30f1b19eda9b93a634d0", size = 76077 },
 ]
+
+[[package]]
+name = "mcp-obsidian"
+version = "0.2.1"
+source = { virtual = "servers/mcp-obsidian" }
 
 [[package]]
 name = "monotonic"
@@ -1645,6 +1657,11 @@ wheels = [
 ]
 
 [[package]]
+name = "weather-server-mcp"
+version = "0.1.0"
+source = { virtual = "servers/weather-server-mcp" }
+
+[[package]]
 name = "websocket-client"
 version = "1.8.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1668,6 +1685,7 @@ dependencies = [
     { name = "langgraph" },
     { name = "mcp" },
     { name = "python-dotenv" },
+    { name = "requests" },
 ]
 
 [package.metadata]
@@ -1682,6 +1700,7 @@ requires-dist = [
     { name = "langgraph", specifier = ">=0.3.28" },
     { name = "mcp", specifier = ">=1.6.0" },
     { name = "python-dotenv", specifier = ">=1.1.0" },
+    { name = "requests", specifier = ">=2.32.3" },
 ]
 
 [[package]]
