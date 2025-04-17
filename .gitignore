@@ -1,4 +1,14 @@
+# Virtual environments
 .env
-.venv/
-__pycache__/
+.venv
+
+# macOS system files
 .DS_Store
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
