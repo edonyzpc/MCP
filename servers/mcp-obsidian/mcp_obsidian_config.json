@@ -1,0 +1,17 @@
+{
+    "mcpServers": {
+        "mcp-obsidian": {
+            "command": "uv",
+            "args": [
+                "--directory",
+                "/Users/edony/code/MCP/servers/mcp-obsidian",
+                "run",
+                "mcp-obsidian"
+            ],
+            "env": {
+                "OBSIDIAN_API_KEY": "<your obsidian api key>",
+                "OBSIDIAN_HOST": "127.0.0.1"
+            }
+        }
+    }
+}
