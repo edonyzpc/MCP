@@ -1,3 +1,7 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "X-MCP"
 version = "0.1.0"
@@ -18,5 +22,11 @@ dependencies = [
     "requests>=2.32.3",
 ]
 
+[project.scripts]
+epub2audio = "agents.epub2audio.epub_2_audio:main"
+
 [tool.uv.workspace]
 members = ["servers/*"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["agents", "clients", "servers"]
