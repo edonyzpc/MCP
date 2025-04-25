@@ -1,5 +1,7 @@
 import logging
+import logging.config
 import datetime
+import yaml
 
 
 class CustomFormatter(logging.Formatter):
@@ -39,10 +41,31 @@ class CustomFormatter(logging.Formatter):
         return formatter.format(record)
 
 
-# Create custom logger logging all five levels
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+# Load logging configuration from file
+# logging.config.fileConfig("./tracing/config.yml")
+with open("./tracing/config.yml", "r") as f:
+    yaml_config = yaml.safe_load(f.read())
+    print(yaml_config)
+    logging.config.dictConfig(yaml_config)
 
+    # Create custom logger logging all five levels
+    logger = logging.getLogger("root")
+    for handler in logger.handlers:
+        if handler.get_name() == "stdout_handler":
+            logger.info("stdout_handler")
+            # Define format for logs
+            fmt = "{1}%(asctime)s {0} | {2}%(levelname)8s{0} | {3}%(filename)s{0} | {4}%(funcName)s(){0} | {5}%(message)s{0}"
+            handler.setFormatter(CustomFormatter(fmt))
+        elif handler.get_name() == "file_handler":
+            logger.info("file_handler")
+            # Define format for logs
+            fmt_file = "%(asctime)s | %(levelname)8s | %(filename)s | %(funcName)s() | %(message)s"
+            handler.setFormatter(logging.Formatter(fmt_file))
+        else:
+            logger.info("xxxxx")
+
+
+"""
 # Define format for logs
 fmt = "{1}%(asctime)s {0}| {2}%(levelname)8s{0} | {3}%(filename)s{0} | {4}%(funcName)s(){0} | {5}%(message)s{0}"
 fmt_file = "%(asctime)s | %(levelname)8s | %(filename)s | %(funcName)s() | %(message)s"
@@ -61,3 +84,13 @@ file_handler.setFormatter(logging.Formatter(fmt_file))
 # Add both handlers to the logger
 logger.addHandler(stdout_handler)
 logger.addHandler(file_handler)
+"""
+
+
+def test_logging():
+    logger.debug("Debug message")
+    logger.info("Info message")
+    logger.warning("Warning message")
+    logger.error("Error message")
+    logger.critical("Critical message")
+    logger.info("info message")

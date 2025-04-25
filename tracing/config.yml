@@ -1,0 +1,21 @@
+version: 1
+disable_existing_loggers: yes
+formatters:
+  simple:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+handlers:
+  stdout_handler:
+    class: logging.StreamHandler
+    level: DEBUG
+    #    formatter: simple
+    stream: ext://sys.stdout
+  file_handler:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: DEBUG
+    filename: example.log
+    #    formatter: simple
+    encoding: utf-8
+loggers:
+  root:
+    level: DEBUG
+    handlers: [stdout_handler, file_handler]
