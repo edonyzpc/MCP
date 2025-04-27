@@ -1,0 +1,26 @@
+logging:
+  version: 1
+  disable_existing_loggers: yes
+  formatters:
+    simple:
+      format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  handlers:
+    stdout_handler:
+      class: logging.StreamHandler
+      level: DEBUG
+      stream: ext://sys.stdout
+    file_handler:
+      class: logging.handlers.TimedRotatingFileHandler
+      level: DEBUG
+      filename: logging.log
+      when: D
+      backupCount: 10
+      encoding: utf-8
+      interval: 1
+  loggers:
+    root:
+      level: DEBUG
+      handlers: [stdout_handler, file_handler]
+mcp:
+  # The path to the MCP log file
+  mcp_log: /path/to/mcp/log.txt

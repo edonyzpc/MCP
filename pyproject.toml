@@ -25,9 +25,10 @@ dependencies = [
 
 [project.scripts]
 epub2audio = "agents.epub2audio.epub_2_audio:main"
+logtest = "tracing.logging:test_logging"
 
 [tool.uv.workspace]
 members = ["servers/*"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["agents", "clients", "servers", "tracing"]
+packages = ["agents", "clients", "servers", "tracing", "config"]
