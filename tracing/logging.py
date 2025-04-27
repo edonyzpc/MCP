@@ -2,6 +2,7 @@ import logging
 import logging.config
 import datetime
 import yaml
+from config import config
 
 
 class CustomFormatter(logging.Formatter):
@@ -43,16 +44,17 @@ class CustomFormatter(logging.Formatter):
 
 # Load logging configuration from file
 # logging.config.fileConfig("./tracing/config.yml")
-with open("./tracing/config.yml", "r") as f:
-    yaml_config = yaml.safe_load(f.read())
-    print(yaml_config)
-    logging.config.dictConfig(yaml_config)
+def init_logging(log_config_file: str = "./config/config.yml"):
+    log_config = config.load_config(log_config_file).get("logging")
+    if log_config is None:
+        raise ValueError("Logging configuration not found in config file.")
+    # Load YAML configuration
+    logging.config.dictConfig(log_config)
 
     # Create custom logger logging all five levels
     logger = logging.getLogger("root")
     for handler in logger.handlers:
         if handler.get_name() == "stdout_handler":
-            logger.info("stdout_handler")
             # Define format for logs
             fmt = "{1}%(asctime)s {0} | {2}%(levelname)8s{0} | {3}%(filename)s{0} | {4}%(funcName)s(){0} | {5}%(message)s{0}"
             handler.setFormatter(CustomFormatter(fmt))
@@ -88,6 +90,12 @@ logger.addHandler(file_handler)
 
 
 def test_logging():
+    try:
+        init_logging()
+    except Exception as e:
+        print(f"Error initializing logging: {e}")
+        return
+    logger = logging.getLogger("root")
     logger.debug("Debug message")
     logger.info("Info message")
     logger.warning("Warning message")
