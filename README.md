@@ -21,6 +21,15 @@ source .venv/bin/activate
 ```bash
 uv add dashscope httpx mcp python-dotenv langchain langchain-core langchain-mcp-adapters langchain-community langgraph
 ```
+4. new a uv workspace as follows:
+```bash
+mkdir servers/sse_mcp
+
+cd servers/sse_mcp
+
+uv init --python=3.10 .
+```
+
 
 ## MCP Server
 ### MCP Server Weather
@@ -38,6 +47,12 @@ source .venv/bin/activate
 # Create our server file
 cd servers/weather-server-mcp
 touch weather.py
+```
+
+### MCP SSE Server
+This is demo for running MCP server with SSE.
+```bash
+uv run sse --port 8000
 ```
 
 #### Run
@@ -64,6 +79,13 @@ source .venv/bin/activate
 # Create our main file
 cd clients/mcp-client
 touch clients/mcp-client/client.py
+```
+
+### MCP SSE Client 
+This is demo for running MCP server with SSE.
+```bash
+# make sure the server is running, `uv run sse --port 8000`
+uv run sse-client
 ```
 
 #### Run
