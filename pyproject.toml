@@ -9,23 +9,32 @@ description = "MCP Servers and Clients by Edony"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "anyio>=4.9.0",
     "browser-use>=0.1.40",
+    "click>=8.1.8",
     "dashscope>=1.23.1",
+    "grandalf>=0.8",
     "httpx>=0.28.1",
     "langchain>=0.3.23",
     "langchain-community>=0.3.21",
     "langchain-core>=0.3.51",
+    "langchain-google-community>=2.0.7",
     "langchain-mcp-adapters>=0.0.7",
     "langchain-text-splitters>=0.3.8",
     "langgraph>=0.3.28",
-    "mcp>=1.6.0",
+    "mcp>=1.9.0",
     "python-dotenv>=1.1.0",
     "requests>=2.32.3",
+    "rich>=14.0.0",
+    "starlette>=0.46.2",
+    "uvicorn>=0.34.1",
 ]
 
 [project.scripts]
 epub2audio = "agents.epub2audio.epub_2_audio:main"
 logtest = "tracing.logging:test_logging"
+sse = "servers.sse_mcp.server:main"
+sse-client = "clients.sse_client.sse:cli"
 
 [tool.uv.workspace]
 members = ["servers/*"]
